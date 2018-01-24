@@ -1,0 +1,52 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.block-admin {
+	padding-top: 40px;
+	h1 {
+		text-align: center;
+		// margin-bottom: 40px;
+		color: #4b4747;
+	}
+}
+
+.userslist {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+.userslist__item {
+	font-weight: 600;
+	color: #555;
+	position: relative;
+	transition-duration: .3s;
+}
+.userslist__item:hover {
+	background: #EFEFEF;
+	transition-duration: .05s;
+}
+
+.userslist__label {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: 0.9em;
+	padding: 10px 0;
+	margin: 0;
+}
+
+.userslist__label  input {
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	position: relative;
+	display: inline-block;
+	box-shadow: inset 0 0 0 1px #A3ADB2;
+	border-radius: 1px;
+}
