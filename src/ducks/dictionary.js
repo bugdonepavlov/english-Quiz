@@ -30,7 +30,7 @@ const addingWord = (word, translation) => {
 				} else {
 					throw new Error("$data should be a non-empty string");
 				}
-
+ 
 			case "object":
 				if (Array.isArray(translation)) {
 					values = translation.filter(e => typeof e === "string" && e.trim().length > 0);
@@ -76,11 +76,20 @@ export default function reducer(state = initialState, action) {
 	switch(type) {
 		case ADD_WORD:
 			return {
-
+				data: addingWord(payload.word, payload.translation),
 			}
+		case REMOVE_WORD:
+			return {
+				data: state.data.delete(payload.word),
+			}
+
+		case REMOVE_TRANSLATION:
+			return {
+				data: deleteTranslation(payload.word, payload.translation),
+			}
+		default:
+			return state
 	}
-
-
 }
 
 export function addWord(word, translation) {
