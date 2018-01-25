@@ -21,5 +21,5 @@ class Root extends Component {
 }
 
 export default connect(state => ({
-	dictionary: state.dictionary.data,
+	dict: state.dict,
 }), { removeWord })(Root);
