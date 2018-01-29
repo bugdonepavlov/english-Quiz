@@ -3,7 +3,7 @@ export class Dictionary {
 		this.map = new Map();
 	}
 
-	addingWord(word, translation) {
+	addingWord = (word, translation) => {
 
 		if (typeof word === "string" && word.length > 0) {
 			let values;
@@ -40,12 +40,12 @@ export class Dictionary {
 		}
 	}
 
-	deleteTranslation(word, translation) {
-		return this.map.get(word).delete(translation);
-	}
+	deleteTranslation = (word, translation) => this.map.get(word).delete(translation);
 
-	deleteWord(word) {
-		this.map.delete(word)
-		return this.map
+	deleteWord = word => this.map.delete(word)
+
+	editedWord = (word, newWord, newTranslation) => {
+		this.map.delete(word);
+		this.addingWord(newWord, newTranslation);
 	}
 }

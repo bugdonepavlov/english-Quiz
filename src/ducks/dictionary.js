@@ -1,4 +1,3 @@
-// import { dictionary } from  'config';
 import {Dictionary} from 'dictionary';
 
 const dict = new Dictionary();
@@ -11,29 +10,65 @@ dict.addingWord('work', 'работать');
 
 const
 	initialState = {
-		dict: dict,
+		data: dict,
 	};
 
 export const ADD_WORD = 'ADD_WORD';
+export const EDIT_WORD = 'EDIT_WORD';
 export const REMOVE_WORD = 'REMOVE_WORD';
 export const REMOVE_TRANSLATION = 'REMOVE_TRANSLATION';
 
 export default function reducer(state = initialState, action) {
 	const { type, payload } = action;
+	let dict;
 
 	switch(type) {
 		case ADD_WORD:
+			state.data.addingWord(payload.word, payload.translation);
+			dict = state.data;
+
 			return {
-				dict: state.dict.addingWord(payload.word, payload.translation),
+				...state,
+				data: {
+					...dict,
+					map: dict.map,
+				}
 			}
-		case REMOVE_WORD:
+
+		case EDIT_WORD:
+			state.data.editedWord(payload.word, payload.newWord, payload.newTranslation);
+			dict = state.data;
+
 			return {
-				dict: state.dict.deleteWord(payload.word),
+				...state,
+				data: {
+					...dict,
+					map: dict.map,
+				}
+			}
+
+		case REMOVE_WORD:
+			state.data.deleteWord(payload.word);
+			dict = state.data;
+
+			return {
+				...state,
+				data: {
+					...dict,
+					map: dict.map,
+				}
 			}
 
 		case REMOVE_TRANSLATION:
+			state.data.deleteTranslation(payload.word, payload.translation);
+			dict = state.data;
+
 			return {
-				dict: state.dict.deleteTranslation(payload.word, payload.translation),
+				...state,
+				data: {
+					...dict,
+					map: dict.map,
+				}
 			}
 		default:
 			return state
@@ -44,6 +79,13 @@ export function addWord(word, translation) {
 	return {
 		type: ADD_WORD,
 		payload: { word, translation },
+	}
+};
+
+export function editWord(word, newWord, newTranslation) {
+	return {
+		type: EDIT_WORD,
+		payload: { word, newWord, newTranslation },
 	}
 };
 
