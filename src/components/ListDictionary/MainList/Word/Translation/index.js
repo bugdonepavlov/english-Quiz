@@ -21,13 +21,13 @@ class Translation extends Component {
 		})
 	}
 
-	handleEditField () {
+	activateEditMode () {
 		this.setState({
 			isEditable: true,
 		})
 	}
 
-	handelCloseField () {
+	disabledEditMode () {
 		this.setState({
 			isEditable: false,
 			text: this.props.translation,
@@ -36,43 +36,41 @@ class Translation extends Component {
 
 	update() {
 		this.props.editTranslation(this.props.word, this.props.translation, this.state.text);
-		
-		this.handelCloseField()
+		this.disabledEditMode();
 	}
 
 	render() {
 
-		const
-			defaultItem = (
-				<div>
-					<span>{this.props.translation}</span>
-					<i className="fa fa-pencil" onClick={() => { this.handleEditField() }}></i>
-				</div>
-			),
-			inlineEditField = (
-				<div className="input-group">
-					<input
-						type="text"
-						className="form-control"
-						value={this.state.text}
-						onChange={(e) => { this.onChangeEditField(e) }}
-					/>
-					<div className="input-group-append">
-						<button
-							className="btn btn-primary"
-							onClick={() => {this.update()}}
-						>Update</button>
-
-						<button onClick={() => this.handelCloseField()} className="btn btn-light">Cancel</button>
-					</div>
-				</div>);
-
 		return (
 			<div
-				key={this.props.translation}
+				key={this.props.key}
 			// onClick={() => { this.props.removeTranslation(this.props.word, this.props.translation) }}
 			>
-				{this.state.isEditable ? inlineEditField : defaultItem}
+				{this.state.isEditable ? 
+					(
+						<div className="input-group">
+							<input
+								type="text"
+								className="form-control"
+								value={this.state.text}
+								onChange={(e) => { this.onChangeEditField(e) }}
+							/>
+							<div className="input-group-append">
+								<button
+									className="btn btn-primary"
+									onClick={() => { this.update() }}
+								>Update</button>
+
+								<button onClick={() => this.disabledEditMode()} className="btn btn-light">Cancel</button>
+							</div>
+						</div>
+					) :
+					(
+						<div>
+							<span>{this.props.translation}</span>
+							<i className="fa fa-pencil" onClick={() => { this.activateEditMode() }}></i>
+						</div>
+					)}
 			</div>
 		);
 	}

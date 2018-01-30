@@ -10,7 +10,7 @@ class Word extends Component {
 				<strong className="">{this.props.word}</strong>
 				<div className="word-item__list lead">
 					{[...this.props.data.get(this.props.word)].map(el => (
-						<Translation translation={el} data={this.props.data} word={this.props.word}/>
+						<Translation key={this.props.translation} translation={el} data={this.props.data} word={this.props.word}/>
 					))}
 
 				</div>
