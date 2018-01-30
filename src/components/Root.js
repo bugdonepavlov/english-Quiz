@@ -8,9 +8,7 @@ class Root extends Component {
 		return (
 			<div className="wrapper">
 				<Header/>
-				<div className="container">
-					<Route path="/" component={ListDictionary}/>
-				</div>
+				<Route path="/" component={ListDictionary}/>
 			</div>
 		)
 	}

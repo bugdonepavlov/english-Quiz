@@ -48,4 +48,9 @@ export class Dictionary {
 		this.map.delete(word);
 		this.addingWord(newWord, newTranslation);
 	}
+
+	editTranslation = (word, translation, newTranslation) => {
+		this.map.get(word).delete(translation);
+		this.map.get(word).add(newTranslation);
+	}
 }

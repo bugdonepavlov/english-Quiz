@@ -17,6 +17,7 @@ export const ADD_WORD = 'ADD_WORD';
 export const EDIT_WORD = 'EDIT_WORD';
 export const REMOVE_WORD = 'REMOVE_WORD';
 export const REMOVE_TRANSLATION = 'REMOVE_TRANSLATION';
+export const EDIT_TRANSLATION = 'EDIT_TRANSLATION';
 
 export default function reducer(state = initialState, action) {
 	const { type, payload } = action;
@@ -37,6 +38,19 @@ export default function reducer(state = initialState, action) {
 
 		case EDIT_WORD:
 			state.data.editedWord(payload.word, payload.newWord, payload.newTranslation);
+			dict = state.data;
+
+			return {
+				...state,
+				data: {
+					...dict,
+					map: dict.map,
+				}
+			}
+
+		case EDIT_TRANSLATION:
+			console.log(1111);
+			state.data.editTranslation(payload.word, payload.translation, payload.newTranslation);
 			dict = state.data;
 
 			return {
@@ -86,6 +100,13 @@ export function editWord(word, newWord, newTranslation) {
 	return {
 		type: EDIT_WORD,
 		payload: { word, newWord, newTranslation },
+	}
+};
+
+export function editTranslation(word, translation, newTranslation) {
+	return {
+		type: EDIT_TRANSLATION,
+		payload: { word, translation, newTranslation },
 	}
 };
 
