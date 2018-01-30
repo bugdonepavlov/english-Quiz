@@ -12,31 +12,39 @@ class Translation extends Component {
 	componentDidMount() {
 		this.setState({
 			text: this.props.translation,
-		})
+		});
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.translation !== this.state.translation) {
+			this.setState({
+				text: nextProps.translation,
+			})
+		}
 	}
 
 	onChangeEditField(e) {
 		this.setState({
 			text: e.target.value,
-		})
+		});
 	}
 
-	activateEditMode () {
+	activateEditMode() {
 		this.setState({
 			isEditable: true,
-		})
+		});
 	}
 
-	disabledEditMode () {
+	deactivateEditMode() {
 		this.setState({
 			isEditable: false,
 			text: this.props.translation,
-		})
+		});
 	}
 
 	update() {
 		this.props.editTranslation(this.props.word, this.props.translation, this.state.text);
-		this.disabledEditMode();
+		this.deactivateEditMode();
 	}
 
 	render() {
@@ -55,20 +63,26 @@ class Translation extends Component {
 								value={this.state.text}
 								onChange={(e) => { this.onChangeEditField(e) }}
 							/>
+
 							<div className="input-group-append">
 								<button
 									className="btn btn-primary"
 									onClick={() => { this.update() }}
 								>Update</button>
 
-								<button onClick={() => this.disabledEditMode()} className="btn btn-light">Cancel</button>
+								<button
+									onClick={() => { this.deactivateEditMode() }}
+									className="btn btn-light">Cancel</button>
 							</div>
 						</div>
 					) :
 					(
 						<div>
 							<span>{this.props.translation}</span>
-							<i className="fa fa-pencil" onClick={() => { this.activateEditMode() }}></i>
+							<i
+								className="fa fa-pencil"
+								onClick={() => { this.activateEditMode() }}
+							></i>
 						</div>
 					)}
 			</div>
