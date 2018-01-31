@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { editTranslation } from 'ducks/dictionary';
+import { removeTranslation, editTranslation } from 'ducks/dictionary';
 
 
 class Translation extends Component {
@@ -52,7 +52,6 @@ class Translation extends Component {
 		return (
 			<div
 				key={this.props.key}
-			// onClick={() => { this.props.removeTranslation(this.props.word, this.props.translation) }}
 			>
 				{this.state.isEditable ? 
 					(
@@ -83,6 +82,8 @@ class Translation extends Component {
 								className="fa fa-pencil"
 								onClick={() => { this.activateEditMode() }}
 							></i>
+
+							<button onClick={() => { this.props.removeTranslation(this.props.word, this.props.translation) }}>x</button>
 						</div>
 					)}
 			</div>
@@ -90,4 +91,4 @@ class Translation extends Component {
 	}
 }
 
-export default connect(null, {editTranslation})(Translation);
+export default connect(null, {removeTranslation, editTranslation})(Translation);

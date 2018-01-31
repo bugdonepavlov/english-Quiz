@@ -1,4 +1,4 @@
-export class Dictionary {
+class Dictionary {
 	constructor() {
 		this.map = new Map();
 	}
@@ -54,3 +54,36 @@ export class Dictionary {
 		this.map.get(word).add(newTranslation);
 	}
 }
+
+export const dictionary = new Dictionary();
+
+
+// заполняем значениями
+// dictionary.addingWord('world', new Set(["мир", "свет", "вселенная"]));
+// dictionary.addingWord('speak', new Set(["говорить", "выступать", "разговаривать"]));
+// dictionary.addingWord('game', new Set(["игра", "партия"]));
+// dictionary.addingWord('work', 'работать');
+// dictionary.addingWord('name', ['имя', 'название', 'наименование']);
+// dictionary.addingWord('set', ['задавать', 'набор', 'комплект']);
+// dictionary.addingWord('list', ['список', 'перечень']);
+// dictionary.addingWord('file', ['файл', 'дело']);
+// dictionary.addingWord('bread', 'хлеб');
+// dictionary.addingWord('great', ['великий', 'большой', 'отличный']);
+// dictionary.addingWord('happy', 'счастливый');
+// dictionary.addingWord('come', ['приходить', 'приехать', 'приезжать']);
+// dictionary.addingWord('our', 'наш');
+// dictionary.addingWord('way', ['путь', 'способ', 'путь']);
+// dictionary.addingWord('very', ['очень', 'самый']);
+// dictionary.addingWord('a lot of', ['много', 'множество', 'масса']);
+// dictionary.addingWord('lucky', 'везучий');
+// dictionary.addingWord('air', 'воздух');
+// dictionary.addingWord('sir', ['сэр', 'господин']);
+// dictionary.addingWord('woman', 'женщина');
+// dictionary.addingWord('under', ['под', 'по', 'при']);
+// dictionary.addingWord('see', ['видеть', 'увидеть', 'смотреть', 'посмотреть']);
+// dictionary.addingWord('yes', 'да');
+// dictionary.addingWord('then', ['тогда', 'затем', 'потом']);
+// dictionary.addingWord('some', ['некоторые', 'несколько']);
+// dictionary.addingWord('some', 'тот же самый');
+// dictionary.addingWord('because', ['потому как', 'потому что', 'при']);
+// dictionary.addingWord('thank', ['спасибо', 'поблагодарить', 'благодарить']);

@@ -1,12 +1,39 @@
-import {Dictionary} from 'dictionary';
+import {dictionary} from 'dictionary';
 
-const dict = new Dictionary();
+const dict = dictionary;
+console.log(dict)
 
 // заполняем значениями
 dict.addingWord('world', new Set(["мир", "свет", "вселенная"]));
 dict.addingWord('speak', new Set(["говорить", "выступать", "разговаривать"]));
 dict.addingWord('game', new Set(["игра", "партия"]));
 dict.addingWord('work', 'работать');
+dict.addingWord('name', ['имя', 'название', 'наименование']);
+dict.addingWord('set', ['задавать', 'набор', 'комплект']);
+dict.addingWord('list', ['список', 'перечень']);
+dict.addingWord('file', ['файл', 'дело']);
+dict.addingWord('bread', 'хлеб');
+dict.addingWord('great', ['великий', 'большой', 'отличный']);
+dict.addingWord('happy', 'счастливый');
+dict.addingWord('come', ['приходить', 'приехать', 'приезжать']);
+dict.addingWord('our', 'наш');
+dict.addingWord('way', ['путь', 'способ', 'путь']);
+dict.addingWord('very', ['очень', 'самый']);
+dict.addingWord('a lot of', ['много', 'множество', 'масса']);
+dict.addingWord('lucky', 'везучий');
+dict.addingWord('air', 'воздух');
+dict.addingWord('sir', ['сэр', 'господин']);
+dict.addingWord('woman', 'женщина');
+dict.addingWord('under', ['под', 'по', 'при']);
+dict.addingWord('see', ['видеть', 'увидеть', 'смотреть', 'посмотреть']);
+dict.addingWord('yes', 'да');
+dict.addingWord('then', ['тогда', 'затем', 'потом']);
+dict.addingWord('some', ['некоторые', 'несколько']);
+dict.addingWord('some', 'тот же самый');
+dict.addingWord('because', ['потому как', 'потому что', 'при']);
+dict.addingWord('thank', ['спасибо', 'поблагодарить', 'благодарить']);
+
+
 
 const
 	initialState = {
@@ -49,7 +76,6 @@ export default function reducer(state = initialState, action) {
 			}
 
 		case EDIT_TRANSLATION:
-			console.log(1111);
 			state.data.editTranslation(payload.word, payload.translation, payload.newTranslation);
 			dict = state.data;
 
@@ -123,3 +149,5 @@ export function removeTranslation(word, translation) {
 		payload: { word, translation },
 	}
 };
+
+

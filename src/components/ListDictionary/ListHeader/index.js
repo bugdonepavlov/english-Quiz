@@ -29,7 +29,7 @@ class ListHeader extends Component {
 					<li className="nav-item">
 						<button type="button" className="btn btn-primary"
 							onClick={ this.handleShow }
-						>+ Add Dictionary</button>
+						>+ Add Word</button>
 					</li>
 				</ul>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
 import ListDictionary  from './ListDictionary';
+import Quiz from './Quiz';
 import Header from './Header';
 
 class Root extends Component {
@@ -8,7 +9,8 @@ class Root extends Component {
 		return (
 			<div className="wrapper">
 				<Header/>
-				<Route path="/" component={ListDictionary}/>
+				<Route exact path="/" component={ListDictionary}/>
+				<Route path="/quiz" component={Quiz} />
 			</div>
 		)
 	}
