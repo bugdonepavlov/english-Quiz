@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
-import ListDictionary  from './ListDictionary';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Dictionary from './Dictionary';
 import Quiz from './Quiz';
 import Header from './Header';
 
-class Root extends Component {
-	render() {
-		return (
-			<div className="wrapper">
-				<Header/>
-				<Route exact path="/" component={ListDictionary}/>
-				<Route path="/quiz" component={Quiz} />
-			</div>
-		)
-	}
-}
+const Root = () => (
+  <div className="wrapper">
+    <Header />
+    <Route exact path="/" component={Dictionary} />
+    <Route path="/quiz" component={Quiz} />
+  </div>);
 
 export default Root;

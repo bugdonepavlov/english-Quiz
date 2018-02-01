@@ -1,1 +1,2 @@
-export const appName = "dictionary";
+/* eslint-disable */
+export const appName = 'dictionary';

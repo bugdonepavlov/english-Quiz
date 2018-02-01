@@ -9,45 +9,128 @@ body {
 	width: 100%;
 }
 
-#modal-root {
-	position: absolute;
-	height: 100%;
-	background: rgba(0,0,0,.05);
-	overflow: hidden;
-//   position: relative;
-//   z-index: 999;
+.fade-enter {
+opacity: 0;
 }
 
-.word-item {
+.fade-enter.fade-enter-active {
+opacity: 1;
+transition: opacity 0.5s ease-in-out 0.3s;
+}
+
+.fade-leave {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+opacity: 0;
+transition: opacity 0.5s ease-in-out;
+}
+.fade-appear {
+    opacity: 0;
+  }
+
+  .fade-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+.wrapper {
+	padding-bottom: 5rem;
+}
+
+#modal-root {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+    pointer-events: none;
+    background: rgba(51, 51, 51, 0.6);
+	transition: .3s background ease-in;
+	z-index: 9999;
+}
+#modal-root:empty {
+    background: transparent;
+}
+.modal-portal {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.header-quiz {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+	&__word {
+		font-size: 2rem;
+		font-weight: 300;
+		line-height: 1.2;
+	}
+}
+
+.word {
 	display: flex;
 	align-items: center;
-	&__list {
-		margin-left: 10px;
-		span {
-			margin-right: 5px;
-			cursor: default;
-			&:hover {
-				background: rgba(0,0,0,.05);
-			}
-			&:after {
-				content: ',';
-				background: white;
-			}
+	&__translation {
+		display: flex;
+		align-items: center;
+		& > div {
+			margin-right: 10px;
+			display: flex;
+			align-items: center;
 			&:first-child {
 				&:before {
 					content: '–';
-					padding-right: 10px;
-					background: white;
+					margin: 0 10px;
 				}
 			}
 			&:last-child {
-				margin-right: 0;
 				&:after {
 					content: '.';
 				}
 			}
+			&:after {
+				content: ',';
+				margin-left: 5px;
+			}
 		}
 	}
+}
+
+.button {
+	border: none;
+	background: transparent;
+	border-radius: .25rem;
+	font-size: 0.8em;
+	cursor: pointer;
+	padding: 0;
+	transition: color 0.1s ease;
+	&:hover {
+		color: #007bff;
+	}
+	&:focus,&:active {
+		outline: none;
+	}
+}
+
+.translation {
+	display: inline-flex;
+	align-items: center;
 }
 
 .btn:not(:disabled):not(.disabled) {

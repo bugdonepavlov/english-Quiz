@@ -1,38 +1,50 @@
-import { dictionary } from 'dictionary';
+import Dictionary from '../dictionary';
 
-const dict = dictionary;
+const dictionary = Dictionary;
+const RandomShifty = () => 0.5 - Math.random();
+const getRandomInt = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
+const getRandomTranslation = value => (Array.isArray(value) ? value[getRandomInt(0, value.length - 1)] : value);
+/* eslint-disable */
+const getCards = () => {
+  const words = [...dictionary.map.keys()].sort(() => RandomShifty()).slice(0, 3);
 
-const RandomBoolean = () => Math.random() >= 0.5;
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-const getRandomTranslation = value => Array.isArray(value) ? value[getRandomInt(0, value.length - 1)] : value;
-const words = [...dict.map.keys()].sort(e => RandomBoolean()).slice(0, 20);
+  return words.map(word => ({
+    word,
+    candidates: [
+      {
+        word: getRandomTranslation([...dictionary.map.get(word).values()]),
+        isTranslation: true,
+      },
 
-const cards = words.map(word => ({
-	word: word,
-	candidates: [
-		{
-			word: getRandomTranslation([...dict.map.get(word).values()]),
-			isTranslation: true,
-		},
-		
-		...[...words].filter(e => e !== word).sort().slice(0, 5).map(candidate => {
-			return {
-				word: getRandomTranslation([...dict.map.get(candidate).values()]),
-				isTranslation: false,
-			}
-		})
-	].sort(() => 0.5 - Math.random())
-}));
+      ...[...words].filter(e => e !== word).sort().slice(0, 5).map(candidate => ({
+        word: getRandomTranslation([...dictionary.map.get(candidate).values()]),
+        isTranslation: false,
+      })),
+    ].sort(() => RandomShifty()),
+  }));
+}
 
+export const START_QUIZ = 'START_QUIZ';
 
-
-const initialState = { cards };
+const initialState = { cards: getCards() };
 
 export default function reducer(state = initialState, action) {
-	const { type, payload } = action;
+  const { type, payload } = action;
 
-	switch(type) {
-		default:
-			return state
-	}
+  switch (type) {
+    case START_QUIZ:
+      return {
+        ...state,
+        cards: getCards(),
+      }
+    default:
+      return state;
+  }
+}
+
+export function startQuiz() {
+  return {
+    type: START_QUIZ,
+    payload: {},
+  };
 }
