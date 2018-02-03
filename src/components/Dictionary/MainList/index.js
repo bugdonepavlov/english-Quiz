@@ -26,6 +26,6 @@ const MainList = ({ data, removeTranslation }) => (
 export default MainList;
 
 MainList.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   removeTranslation: PropTypes.func.isRequired,
 };

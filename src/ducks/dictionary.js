@@ -12,7 +12,7 @@ const
 const updatedFiltred = (data, search) => {
   const keys = [...data.map.keys()].filter(el => el.toLowerCase().includes(search));
 
-  return search ? { map: new Map(keys.map(key => ([key, data.map.get(key)])))} : data;
+  return search ? { map: new Map(keys.map(key => ([key, data.map.get(key)]))) } : data;
 };
 
 export const ADD_WORD = 'ADD_WORD';
@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         search: payload.search,
         filtred: updatedFiltred(state.data, payload.search),
-      }
+      };
 
     case ADD_WORD:
       state.data.addingWord(payload.word, payload.translation);
@@ -42,7 +42,7 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data }
+        filtred: { ...state.data },
       };
 
     case EDIT_WORD:
@@ -54,7 +54,7 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data }
+        filtred: { ...state.data },
       };
 
     case EDIT_TRANSLATION:
@@ -66,7 +66,7 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data }
+        filtred: { ...state.data },
       };
 
     case REMOVE_WORD:
@@ -78,7 +78,7 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: {...state.data },
+        filtred: { ...state.data },
       };
 
     case REMOVE_TRANSLATION:

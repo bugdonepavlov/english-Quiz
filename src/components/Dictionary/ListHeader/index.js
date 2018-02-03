@@ -7,7 +7,6 @@ import ModalContent from 'components/common/ModalContent';
 class ListHeader extends Component {
   state = {
     showModal: false,
-    search: '',
   };
 
   showModal = () => {
@@ -62,6 +61,8 @@ class ListHeader extends Component {
 ListHeader.propTypes = {
   size: PropTypes.string.isRequired,
   addWord: PropTypes.func.isRequired,
+  filterWord: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
 };
 
 export default connect(state => ({

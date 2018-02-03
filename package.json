@@ -6,7 +6,6 @@
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
-    "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
     "babel-preset-react-app": "^3.1.0",
     "babel-runtime": "6.26.0",
@@ -27,7 +26,7 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
     "immutable": "^3.8.2",
-    "jest": "20.0.4",
+    "jest-cli": "^22.1.4",
     "jwt-simple": "^0.5.1",
     "mdbootstrap": "^4.4.3",
     "moment": "^2.19.3",
@@ -47,7 +46,7 @@
     "react-moment": "^0.6.8",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "next",
+    "react-router-redux": "^5.0.0-alpha.9",
     "reactstrap": "next",
     "redux": "^3.7.2",
     "redux-form": "^7.2.0",
@@ -62,9 +61,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -109,11 +109,19 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
+    "react-scripts": "1.0.11",
+    "jest": "^20.0.4",
     "node-sass": "^4.7.2",
+    "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.6"
   }
 }

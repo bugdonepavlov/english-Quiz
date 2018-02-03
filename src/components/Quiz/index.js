@@ -12,30 +12,30 @@ class Quiz extends Component {
     maxQuestions: null,
     // answer: '',
     result: 0,
-    active: false,
+    // active: false,
   };
 
   componentWillMount() {
     this.setState({
       question: this.props.cards[this.state.current],
-      maxQuestions: this.props.cards.length,
+      maxQuestions: this.props.cards.length, // eslint-disable-line react/forbid-prop-types
     });
   }
 
   nextQuestion = (e) => {
     const
       {
-        current, question, result
+        current, question, result,
       } = this.state;
     const answer = e.target.value;
     const isTranslation =
       question.candidates.find(el => el.word === answer).isTranslation ? result + 1 : result;
 
-      this.setState({
-        current: current + 1,
-        question: this.props.cards[this.state.current + 1],
-        result: isTranslation,
-      });
+    this.setState({
+      current: current + 1,
+      question: this.props.cards[this.state.current + 1],
+      result: isTranslation,
+    });
   }
 
   start = () => {
@@ -52,7 +52,7 @@ class Quiz extends Component {
     return (
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
-          {this.state.current !== this.state.maxQuestions ? 
+          {this.state.current !== this.state.maxQuestions ?
             (<ReactCSSTransitionGroup
               component="div"
               transitionName="fade"
@@ -74,12 +74,12 @@ class Quiz extends Component {
                 <h1 className="display-4">Поздравляю!</h1>
                 <p className="lead">Вы ответили на все вопросы, ваш результат - <strong>{this.state.result}</strong></p>
                 <hr className="my-4" />
-                  <p className="lead">
-                    <button className="btn btn-primary btn-lg" onClick={() => {this.start()}}>Начать заново?</button>
-                  </p>
+                <p className="lead">
+                  <button className="btn btn-primary btn-lg" onClick={() => { this.start(); }}>Начать заново?</button>
+                </p>
               </div>
             )
-          
+
         }
         </div>
       </div>
@@ -88,9 +88,11 @@ class Quiz extends Component {
 }
 
 Quiz.propTypes = {
-  cards: PropTypes.objectOf({
-    word: PropTypes.string,
-  }).isRequired,
+  cards: PropTypes.arrayOf(PropTypes.shape({
+    word: PropTypes.string.isRequired,
+    candidates: PropTypes.array.isRequired,
+  })).isRequired,
+  startQuiz: PropTypes.func.isRequired,
 };
 
 export default connect(state => ({

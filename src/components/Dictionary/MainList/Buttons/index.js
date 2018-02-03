@@ -43,7 +43,7 @@ class Buttons extends Component {
 Buttons.propTypes = {
   removeWord: PropTypes.func.isRequired,
   editWord: PropTypes.func.isRequired,
-  translation: PropTypes.string.isRequired,
+  translation: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   word: PropTypes.string.isRequired,
 };
 
