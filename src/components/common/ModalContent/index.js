@@ -14,7 +14,7 @@ class ModalContent extends Component {
     if (this.props.editWord) {
       this.setState({
         word: this.props.word,
-        translations: [...this.props.translation],
+        translations: [...this.props.translations],
       });
     }
   }
@@ -140,10 +140,10 @@ class ModalContent extends Component {
 }
 
 ModalContent.propTypes = {
-  word: PropTypes.string.isRequired,
-  editWord: PropTypes.func.isRequired,
-  // translation: PropTypes.translation.oneOfType,
-  addWord: PropTypes.func.isRequired,
+  word: PropTypes.string,
+  editWord: PropTypes.func,
+  translations: PropTypes.instanceOf(Set),
+  addWord: PropTypes.func,
   hideModal: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };

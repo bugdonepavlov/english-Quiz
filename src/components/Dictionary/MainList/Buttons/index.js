@@ -33,7 +33,7 @@ class Buttons extends Component {
           title="Edit"
           editWord={this.props.editWord}
           word={this.props.word}
-          translation={this.props.translation}
+          translations={this.props.translations}
         />)}
       </div>
     );
@@ -43,7 +43,7 @@ class Buttons extends Component {
 Buttons.propTypes = {
   removeWord: PropTypes.func.isRequired,
   editWord: PropTypes.func.isRequired,
-  translation: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  translations: PropTypes.instanceOf(Set).isRequired,
   word: PropTypes.string.isRequired,
 };
 

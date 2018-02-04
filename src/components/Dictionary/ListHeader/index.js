@@ -59,7 +59,7 @@ class ListHeader extends Component {
 }
 
 ListHeader.propTypes = {
-  size: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
   addWord: PropTypes.func.isRequired,
   filterWord: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,

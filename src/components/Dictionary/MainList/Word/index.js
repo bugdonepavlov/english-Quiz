@@ -14,7 +14,7 @@ const Word = ({ word, data }) => (
 
 Word.propTypes = {
   word: PropTypes.string.isRequired,
-  data: PropTypes.oneOfType.isRequired,
+  data: PropTypes.instanceOf(Map).isRequired,
 };
 
 export default Word;

@@ -41,7 +41,7 @@ class Dictionary {
 
   deleteTranslation = (word, translation) => this.map.get(word).delete(translation);
 
-  deleteWord = word => this.map.delete(word)
+  deleteWord = word => this.map.delete(word);
 
   editedWord = (word, newWord, newTranslation) => {
     this.map.delete(word);

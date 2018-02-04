@@ -42,7 +42,10 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data },
+        filtred: updatedFiltred({
+          ...state.data,
+          map: state.data.map,
+        }, state.search),
       };
 
     case EDIT_WORD:
@@ -54,7 +57,10 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data },
+        filtred: updatedFiltred({
+          ...state.data,
+          map: state.data.map,
+        }, state.search),
       };
 
     case EDIT_TRANSLATION:
@@ -66,7 +72,10 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data },
+        filtred: updatedFiltred({
+          ...state.data,
+          map: state.data.map,
+        }, state.search),
       };
 
     case REMOVE_WORD:
@@ -78,7 +87,10 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data },
+        filtred: updatedFiltred({
+          ...state.data,
+          map: state.data.map,
+        }, state.search),
       };
 
     case REMOVE_TRANSLATION:
@@ -90,7 +102,10 @@ export default function reducer(state = initialState, action) {
           ...state.data,
           map: state.data.map,
         },
-        filtred: { ...state.data },
+        filtred: updatedFiltred({
+          ...state.data,
+          map: state.data.map,
+        }, state.search),
       };
     default:
       return state;
