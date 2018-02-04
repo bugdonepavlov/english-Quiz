@@ -56,7 +56,6 @@ describe('Dictionary test suite', () => {
     expect(dict.map.has('a')).toBe(true);
     dict.deleteWord('a');
     expect(dict.map.has('a')).toBe(false);
-    console.log('dict', [...dict.map.keys()])
   });
 
   it('Remove Translation in Dictionary', () => {
@@ -66,7 +65,6 @@ describe('Dictionary test suite', () => {
     dict.deleteTranslation('test', 'тест');
     expect(dict.map.has('test')).toBe(true);
     expect(dict.map.get('test').has('тест')).toBe(false);
-    console.log('dict', [...dict.map.keys()])
   });
 
   it('Edit Word in Dictionary', () => {
