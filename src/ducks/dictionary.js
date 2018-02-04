@@ -12,7 +12,7 @@ const
 const updatedFiltred = (data, search) => {
   const keys = [...data.map.keys()].filter(el => el.toLowerCase().includes(search));
 
-  return search ? { map: new Map(keys.map(key => ([key, data.map.get(key)]))) } : data;
+  return search ? { ...data, map: new Map(keys.map(key => ([key, data.map.get(key)]))) } : data;
 };
 
 export const ADD_WORD = 'ADD_WORD';

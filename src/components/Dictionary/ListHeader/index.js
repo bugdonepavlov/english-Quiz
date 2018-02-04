@@ -25,7 +25,7 @@ class ListHeader extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light bg-light mb-3">
+      <nav className="navbar navbar-light bg-light mb-3 nav-bar-list">
         <div className="navbar-brand">All Dictionary({this.props.size})</div>
 
         <ul className="nav nav-pills">
