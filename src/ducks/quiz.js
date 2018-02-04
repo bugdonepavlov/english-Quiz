@@ -8,7 +8,7 @@ const getRandomTranslation =
 
 
 const getCards = () => {
-  const words = [...dictionary.map.keys()].sort(() => RandomShifty()).slice(0, 3);
+  const words = [...dictionary.map.keys()].sort(() => RandomShifty()).slice(0, 20);
 
   return words.map(word => ({
     word,
@@ -16,11 +16,13 @@ const getCards = () => {
       {
         word: getRandomTranslation([...dictionary.map.get(word).values()]),
         isTranslation: true,
+        id: (Math.random() + Date.now()).toString(),
       },
 
       ...[...words].filter(e => e !== word).sort().slice(0, 5).map(candidate => ({
         word: getRandomTranslation([...dictionary.map.get(candidate).values()]),
         isTranslation: false,
+        id: (Math.random() + Date.now()).toString(),
       })),
     ].sort(() => RandomShifty()),
   }));

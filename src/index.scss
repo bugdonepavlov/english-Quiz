@@ -128,6 +128,22 @@ transition: opacity 0.5s ease-in-out;
 	}
 }
 
+.list-quiz {
+	li {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		padding: 0 1.25rem;
+		label {
+			padding: 0.75rem 0 0.75rem 1.25rem;
+			width: 100%;
+			cursor: pointer;
+			font-size: 1.2em;
+			font-weight: 300;
+		}
+	}
+}
+
 .translation {
 	display: inline-flex;
 	align-items: center;

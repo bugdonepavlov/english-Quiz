@@ -27,7 +27,7 @@ class Quiz extends Component {
       {
         current, question, result,
       } = this.state;
-    const answer = e.target.value;
+    const answer = e.value;
     const isTranslation =
       question.candidates.find(el => el.word === answer).isTranslation ? result + 1 : result;
 

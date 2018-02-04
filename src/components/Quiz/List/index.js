@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class List extends Component {
   state = {
-    answer: '',
+    id: '',
   };
 
-  handleInput(e) {
-    this.props.nextQuestion(e);
+  handleInput(event) {
+    const { target } = event;
 
-    this.setState({
-      answer: e.target.value,
-    });
+    setTimeout(() => { this.props.nextQuestion(target); }, 400);
+    this.setState({ id: target.id });
   }
 
   render() {
@@ -26,31 +24,21 @@ class List extends Component {
             </div>
           </div>
           <ul className="list-quiz list-group mb-2">
-            {/* <ReactCSSTransitionGroup
-              className="fade"
-              component="div"
-              transitionName="fade"
-              transitionEnterTimeout={800}
-              transitionLeaveTimeout={500}
-              transitionAppear
-              transitionAppearTimeout={500}
-            > */}
-            {this.props.question.candidates && this.props.question.candidates.map((e, i) =>
+            {this.props.question.candidates && this.props.question.candidates.map(e =>
               (<li
-                className="list-group-item list-group-item-action"
+                className={`list-group-item list-group-item-action ${this.state.id === e.id ? 'active' : ''}`}
                 key={e.word}
               >
                 <input
                   type="radio"
                   name="quiz"
-                  id={i}
+                  id={e.id}
                   value={e.word}
-                  checked={this.state.answer === e.word}
-                  onChange={(el) => { this.handleInput(el); }}
+                  checked={this.state.id === e.id}
+                  onChange={(event) => { this.handleInput(event); }}
                 />
-                <label className="form-check-label" htmlFor={i}>{e.word}</label>
+                <label className="form-check-label" htmlFor={e.id}>{e.word}</label>
               </li>))}
-            {/* </ReactCSSTransitionGroup> */}
           </ul>
         </div>
       </div>
