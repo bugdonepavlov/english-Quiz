@@ -1,4 +1,4 @@
-class Dictionary {
+export class Dictionary {
   constructor() {
     this.map = new Map();
   }
