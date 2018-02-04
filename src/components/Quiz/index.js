@@ -10,9 +10,7 @@ class Quiz extends Component {
     question: [],
     current: 0,
     maxQuestions: null,
-    // answer: '',
     result: 0,
-    // active: false,
   };
 
   componentWillMount() {
