@@ -77,7 +77,7 @@ describe('Dictionary test suite', () => {
     expect(dict.map.get('new test').has('new value')).toBe(true);
   });
 
-  it('Edit Word in Dictionary', () => {
+  it('Edit Translation in Dictionary', () => {
     dict.addingWord('test', 'тест');
     expect(dict.map.has('test')).toBe(true);
     expect(dict.map.get('test').has('тест')).toBe(true);
